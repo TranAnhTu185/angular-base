@@ -1,0 +1,31 @@
+<nz-form-item>
+      <nz-form-label [nzFor]="id" [nzRequired]="required">{{ label }}</nz-form-label>
+      <nz-form-control 
+        [nzErrorTip]="errorMessage"
+        [nzValidateStatus]="(control.invalid && control.touched) ? 'error' : ''"
+      >
+        <input
+          nz-input
+          [id]="id"
+          [type]="type"
+          [placeholder]="placeholder"
+          [disabled]="disabled"
+          [(ngModel)]="value"
+          (ngModelChange)="onValueChange($event)"
+          (blur)="onBlur()"
+        />
+        <ng-template #prefixIcon>
+          <span nz-icon [nzType]="prefix" *ngIf="prefix"></span>
+        </ng-template>
+        <ng-template #suffixIcon>
+          <span nz-icon [nzType]="suffix" *ngIf="suffix && !showClear"></span>
+          <span 
+            nz-icon 
+            nzType="close-circle" 
+            *ngIf="allowClear && value && !disabled" 
+            (click)="clearInput()"
+            class="ant-input-clear-icon"
+          ></span>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>

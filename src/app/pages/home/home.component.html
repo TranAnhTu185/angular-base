@@ -1,0 +1,12 @@
+<app-action-button nzTypeButton="default" nzIcon="close" text="{{title}}"
+    (clickEvent)="btnClickExportExcel()"></app-action-button>
+
+<form [formGroup]="form">
+    <app-input
+        formControlName="email"
+        label="email"
+        type="email"
+        [required]="true"
+        [minLength]="6"
+      ></app-input>
+</form>

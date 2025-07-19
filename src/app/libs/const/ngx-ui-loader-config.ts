@@ -1,0 +1,32 @@
+import {NgxUiLoaderConfig} from 'ngx-ui-loader';
+
+export const LOADER_CONFIG: NgxUiLoaderConfig = {
+  'bgsColor': 'red',
+  'bgsOpacity': 0.3,
+  'bgsPosition': 'bottom-right',
+  'bgsSize': 40,
+  'bgsType': 'ball-spin-clockwise',
+  'blur': 5,
+  'delay': 0,
+  'fastFadeOut': true,
+  'fgsColor': '#474bff',
+  'fgsPosition': 'center-center',
+  'fgsSize': 40,
+  'fgsType': 'ball-spin-fade-rotating',
+  'gap': 24,
+  'logoPosition': 'center-center',
+  'logoSize': 100,
+  // 'logoUrl': '/assets/media/icons/loading-vuong-nobg.gif',
+  'masterLoaderId': 'master',
+  'overlayBorderRadius': '5',
+  'overlayColor': 'rgba(255, 255, 255, 0.5)',
+  'pbColor': '#e65858',
+  'pbDirection': 'ltr',
+  'pbThickness': 3,
+  'hasProgressBar': true,
+  'text': '',
+  'textColor': '#FFFFFF',
+  'textPosition': 'center-center',
+  'maxTime': -1,
+  'minTime': 300
+};

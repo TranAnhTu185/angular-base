@@ -1,0 +1,18 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.
+/yarn.lock
+
+# production
+/dist
+/build
+
+# misc
+.sass-cache
+.eslintcache
+/coverage
+/tmp
+.env
+.angular/cache
