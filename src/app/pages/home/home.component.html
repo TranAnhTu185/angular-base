@@ -2,11 +2,6 @@
     (clickEvent)="btnClickExportExcel()"></app-action-button>
 
 <form [formGroup]="form">
-    <app-input
-        formControlName="email"
-        label="email"
-        type="email"
-        [required]="true"
-        [minLength]="6"
-      ></app-input>
+    <app-input label="Username" placeholder="Nhập username" formControlName="username"
+        [error]="form.get('email')?.touched && form.get('email')?.invalid ? 'Vui lòng nhập email' : ''"></app-input>
 </form>

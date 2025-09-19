@@ -1,0 +1,49 @@
+<div class="login-page">
+    <div class="login-card">
+        <div class="login-header">
+            <div class="icon">🔒</div>
+            <h1>Chào mừng quay lại</h1>
+            <p>Đăng nhập để tiếp tục</p>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+            <!-- username -->
+            <div class="form-group">
+                <label>Username</label>
+                <input nz-input type="username" formControlName="username" placeholder="Nhập username" />
+                <small *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
+                    Vui lòng nhập username
+                </small>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                <nz-input-group inputPasswordCustom [nzSuffix]="suffixTemplate">
+                    <input iconCustom [type]="passwordVisible ? 'text' : 'password'" nz-input type="password"
+                        formControlName="password" placeholder="••••••••" />
+                </nz-input-group>
+
+                <ng-template #suffixTemplate>
+                    <nz-icon class="ant-input-password-icon" [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                        (click)="passwordVisible = !passwordVisible" />
+                </ng-template>
+                <!-- <input nz-input type="password" formControlName="password" placeholder="••••••••" /> -->
+                <small *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+                    Mật khẩu tối thiểu 6 ký tự
+                </small>
+            </div>
+
+            <button type="submit" [disabled]="form.invalid || loading()">
+                {{ loading() ? 'Đang đăng nhập...' : 'Đăng nhập' }}
+            </button>
+        </form>
+
+        <p class="error" *ngIf="error()">{{ error() }}</p>
+
+        <div class="register-link">
+            Chưa có tài khoản?
+            <a href="#">Đăng ký</a>
+        </div>
+    </div>
+</div>

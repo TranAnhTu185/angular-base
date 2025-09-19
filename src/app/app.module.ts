@@ -7,7 +7,7 @@ import {registerLocaleData} from '@angular/common';
 import en from '@angular/common/locales/en';
 import {FormsModule} from '@angular/forms';
 import {AppServiceProxyModule} from './api/app-service-proxy.module';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {moduleHttpLoaderFactory} from './libs/services/ngx-translate-module-loader';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
@@ -15,6 +15,7 @@ import {LOADER_CONFIG} from './libs/const/ngx-ui-loader-config';
 import {APP_INIT_PROVIDER} from './app.routes';
 import {AppRoutingModule} from './app-routing.module';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 registerLocaleData(en);
 
@@ -40,6 +41,11 @@ registerLocaleData(en);
     APP_INIT_PROVIDER,
     {provide: LOCALE_ID, useValue: 'en-US'},
     {provide: NZ_I18N, useValue: en_US},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true  // 👈 quan trọng, để có thể add nhiều interceptor
+    }
     // {
     //   provide: NZ_DATE_LOCALE, useValue: enDate
     // },

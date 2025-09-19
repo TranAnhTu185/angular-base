@@ -17,12 +17,38 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { CommonModule } from "@angular/common";
 import { ActionButtonComponent } from "../libs/action-button/component/action-button.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { InputComponent } from "../libs/dynamic-form/input/input.component";
+import { AppInputComponent } from "../libs/dynamic-form/app-input.component";
+import { AppTextareaComponent } from "../libs/dynamic-form/app-textarea.component";
+import { NzInputNumberModule } from "ng-zorro-antd/input-number";
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { AppNumberInputComponent } from "../libs/dynamic-form/app-number-input.component";
+import { AppSelectComponent } from "../libs/dynamic-form/app-select.component";
+import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
+import { AppCheckboxComponent } from "../libs/dynamic-form/app.checkbox.component";
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { AppSwitchComponent } from "../libs/dynamic-form/app-switch.component";
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+import { AppTimePickerComponent } from "../libs/dynamic-form/timpicker.component";
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { AppDatePickerComponent } from "../libs/dynamic-form/datepicker.component";
+import { CustomRangePickerComponent } from "../libs/dynamic-form/date-range-picker.component";
+import { CustomTableComponent } from "../libs/table/custom-table.component";
+import { NzTableModule } from 'ng-zorro-antd/table';
+
 
 @NgModule({
   declarations: [
     ActionButtonComponent,
-    InputComponent
+    AppInputComponent,
+    AppTextareaComponent,
+    AppNumberInputComponent,
+    AppSelectComponent,
+    AppCheckboxComponent,
+    AppSwitchComponent,
+    AppTimePickerComponent,
+    AppDatePickerComponent,
+    CustomRangePickerComponent,
+    CustomTableComponent
   ],
   imports: [
     CommonModule,
@@ -43,9 +69,15 @@ import { InputComponent } from "../libs/dynamic-form/input/input.component";
     NzPopconfirmModule,
     FormsModule, 
     ReactiveFormsModule, 
-    NzInputModule, 
     NzFormModule, 
-    NzIconModule
+    NzIconModule,
+    NzInputNumberModule,
+    NzSelectModule,
+    NzCheckboxModule,
+    NzSwitchModule,
+    NzTimePickerModule,
+    NzDatePickerModule,
+    NzTableModule
   ],
   exports: [
     NzFormModule,
@@ -56,7 +88,16 @@ import { InputComponent } from "../libs/dynamic-form/input/input.component";
     NzModalModule,
     TranslateModule,
     ActionButtonComponent,
-    InputComponent,
+    AppInputComponent,
+    AppTextareaComponent,
+    AppNumberInputComponent,
+    AppSelectComponent,
+    AppCheckboxComponent,
+    AppSwitchComponent,
+    AppTimePickerComponent,
+    AppDatePickerComponent,
+    CustomRangePickerComponent,
+    CustomTableComponent,
   ],
   providers: [],
 })
