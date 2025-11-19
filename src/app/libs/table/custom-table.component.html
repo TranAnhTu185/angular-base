@@ -1,23 +1,36 @@
-<!-- shared/custom-table.component.html -->
 <nz-table
-  #basicTable
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-  [nzBordered]="true"
-></nz-table>
+    #basicTable
+    [nzBordered]="bordered"
+    [nzSize]="size"
+    [nzData]="displayData"
+    [nzFrontPagination]="false"
+    [nzTotal]="total"
+    [nzPageIndex]="pageIndex"
+    [nzPageSize]="pageSize"
+    [nzShowSizeChanger]="true"
+    [nzPageSizeOptions]="[5, 10, 20]"
+    (nzQueryParams)="onQueryParamsChange($event)"
+>
+    <thead>
+    <tr>
+        <th *ngFor="let col of columns"
+            [nzShowSort]="col.sortable"
+        >
+            {{ col.title }}
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let item of displayData; let i = index">
+        <td *ngFor="let col of columns">
+            <ng-container *ngIf="col; else defaultCell">
+                {{ item[col.key] &&  item[col.key] }}
+            </ng-container>
+            <ng-template #defaultCell>
+                {{ item[col.key] }}
+            </ng-template>
+        </td>
+    </tr>
+    </tbody>
+</nz-table>

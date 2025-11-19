@@ -9,10 +9,7 @@ import { HomeComponent } from './home.component';
         path: '',
         component: HomeComponent,
         data: {
-          title: 'MeetCoach | Elevate Your Life with Online Coaching Platform',
-          description:
-            'Discover top-notch Online Counseling, and Coaching at MeetCoach. Elevate your professional growth with our premier Online Coaching Platform.',
-          ogUrl: 'meetcoach.com',
+          breadcrumb: 'Home',
         },
       },
     ]),

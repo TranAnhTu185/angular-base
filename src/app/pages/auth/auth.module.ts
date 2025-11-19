@@ -5,6 +5,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzFlexModule } from 'ng-zorro-antd/flex';
 
 
 
@@ -15,7 +17,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule, FormsModule, NzInputModule, NzIconModule
+    ReactiveFormsModule, FormsModule, NzInputModule, NzIconModule,
+    NzButtonModule,
+    NzFlexModule
   ]
 })
 export class AuthModule { }

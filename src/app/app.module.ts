@@ -16,6 +16,7 @@ import {APP_INIT_PROVIDER} from './app.routes';
 import {AppRoutingModule} from './app-routing.module';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import {OAuthModule} from "angular-oauth2-oidc";
 
 registerLocaleData(en);
 
@@ -27,6 +28,7 @@ registerLocaleData(en);
     AppRoutingModule,
     AppServiceProxyModule,
     HttpClientModule,
+    OAuthModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

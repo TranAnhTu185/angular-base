@@ -1,35 +1,79 @@
-// shared/custom-table.component.ts
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NzTableQueryParams } from 'ng-zorro-antd/table';
+
+export interface TableColumn {
+  key: string;
+  title: string;
+  width?: string;
+  sortable?: boolean;
+  filters?: { text: string; value: any }[];
+  // onFilter?: (value: any, record: any) => boolean;
+  // render?: (data: any, record: any, index: number) => string | number | HTMLElement;
+}
 
 @Component({
-  selector: 'app-custom-table',
+  selector: 'app-shared-table',
   standalone: false,
-  templateUrl: './custom-table.component.html',
+  templateUrl: './custom-table.component.html'
 })
-export class CustomTableComponent<T> {
-  @Input() columns: Array<{ key: string; title: string }> = [];
-  @Input() data: T[] = [];
-  @Input() loading = false;
+export class SharedTableComponent {
+  @Input() data: any[] = [];
+  @Input() columns: TableColumn[] = [];
+  @Input() bordered = true;
+  @Input() size: 'small' | 'middle' | 'default' = 'middle';
 
-  @Input() pageSize = 10;
-  @Input() pageIndex = 1;
-  @Input() total = 0;
+  pageSize = 5;
+  pageIndex = 1;
+  total = 0;
+  displayData: any[] = [];
 
-  @Output() pageIndexChange = new EventEmitter<number>();
-  @Output() pageSizeChange = new EventEmitter<number>();
-  @Output() sortChange = new EventEmitter<{ key: string; value: string }>();
-
-  onPageIndexChange(index: number): void {
-    this.pageIndex = index;
-    this.pageIndexChange.emit(index);
+  ngOnChanges() {
+    this.total = this.data.length;
+    this.refreshDisplayData();
   }
 
-  onPageSizeChange(size: number): void {
-    this.pageSize = size;
-    this.pageSizeChange.emit(size);
+  onQueryParamsChange(params: NzTableQueryParams): void {
+    const { pageIndex, pageSize, sort, filter } = params;
+    this.pageIndex = pageIndex;
+    this.pageSize = pageSize;
+
+    let filteredData = [...this.data];
+
+    // Filter
+    // filter.forEach(f => {
+    //   if (f.value && f.value.length > 0) {
+    //     const col = this.columns.find(c => c.key === f.key);
+    //     if (col?.onFilter) {
+    //       filteredData = filteredData.filter(item =>
+    //           // @ts-ignore
+    //           f.value.some(val => col.onFilter!(val, item))
+    //       );
+    //     }
+    //   }
+    // });
+
+    // Sort
+    sort.forEach(s => {
+      if (s.value) {
+        filteredData = filteredData.sort((a, b) =>
+            s.value === 'ascend'
+                ? (a[s.key] > b[s.key] ? 1 : -1)
+                : (a[s.key] < b[s.key] ? 1 : -1)
+        );
+      }
+    });
+
+    this.total = filteredData.length;
+    this.displayData = filteredData.slice(
+        (this.pageIndex - 1) * this.pageSize,
+        this.pageIndex * this.pageSize
+    );
   }
 
-  onSort(key: string, value: string): void {
-    this.sortChange.emit({ key, value });
+  private refreshDisplayData() {
+    this.displayData = this.data.slice(
+        (this.pageIndex - 1) * this.pageSize,
+        this.pageIndex * this.pageSize
+    );
   }
 }

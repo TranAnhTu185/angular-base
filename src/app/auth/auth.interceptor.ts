@@ -14,7 +14,7 @@ import { catchError } from 'rxjs/operators';
 export class AuthInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // Lấy token từ localStorage (hoặc service)
-        const token = localStorage.getItem('access_token');
+        const token = localStorage.getItem('token');
 
         let authReq = req;
         if (token) {

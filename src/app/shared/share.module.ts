@@ -32,7 +32,7 @@ import { AppTimePickerComponent } from "../libs/dynamic-form/timpicker.component
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { AppDatePickerComponent } from "../libs/dynamic-form/datepicker.component";
 import { CustomRangePickerComponent } from "../libs/dynamic-form/date-range-picker.component";
-import { CustomTableComponent } from "../libs/table/custom-table.component";
+import { SharedTableComponent } from "../libs/table/custom-table.component";
 import { NzTableModule } from 'ng-zorro-antd/table';
 
 
@@ -48,7 +48,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     AppTimePickerComponent,
     AppDatePickerComponent,
     CustomRangePickerComponent,
-    CustomTableComponent
+    SharedTableComponent,
   ],
   imports: [
     CommonModule,
@@ -77,7 +77,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     NzSwitchModule,
     NzTimePickerModule,
     NzDatePickerModule,
-    NzTableModule
+    NzTableModule,
   ],
   exports: [
     NzFormModule,
@@ -97,7 +97,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     AppTimePickerComponent,
     AppDatePickerComponent,
     CustomRangePickerComponent,
-    CustomTableComponent,
+    SharedTableComponent,
   ],
   providers: [],
 })

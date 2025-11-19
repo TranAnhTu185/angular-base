@@ -5,7 +5,10 @@
             <h1>Chào mừng quay lại</h1>
             <p>Đăng nhập để tiếp tục</p>
         </div>
-
+        <div class="btn-wrappers" nz-flex nzJustify="space-between">
+            <button nz-button nzType="default" (click)="signInWithGoogle()">Sign in with Google</button>
+            <button nz-button nzType="default" (click)="signInWithFacebook()">Sign in with Facebook</button>
+        </div>
         <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
             <!-- username -->
             <div class="form-group">
